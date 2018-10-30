@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="eudora" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="eudora" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="eudora" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="eudora" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Eudorado Dashboard</title>
+  <base href="/">
+  <link rel="icon" type="image/x-icon" href="res/favicon.png" />
+
+  <meta name="description" content="Eldorado Hackathon">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+
+
+  <!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src='bower_components/angular-charts/dist/angular-charts.min.js'></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
+
+  <script src="bower_components/chartjs/dist/Chart.js"></script>
+
+
+  <script src="app.js"></script>
+  <script src="list/list_controller.js"></script>
+  <script src="dashboard/dashboard_controller.js"></script>
+
+</head>
+<body ng-app="eudora">
+
+  <md-toolbar class="md-medium-tall header" layout="row" layout-align="center">
+    <!--<div class="md-toolbar-tools" layout="row" layout-align="center">-->
+      <span><img src="res/eudora.png"></span>
+    <!--</div>-->
+  </md-toolbar>
+
+  <md-content class="main-content">
+    <div ng-view  layout="row" layout-align="center center"></div>
+  </md-content>
+
+  <footer>
+    <div layout="row" layout-align="center center">
+      <h2>Eudora</h2>
+    </div>
+  </footer>
+</body>
+</html>

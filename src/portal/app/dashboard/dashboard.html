@@ -1,0 +1,99 @@
+
+<div ng-controller="dashboardCtrl as ctrl" layout-align="center center">
+    <br>
+    <br><br><br>
+    <div layout-align="center center" ng-show="isLoading">
+        <md-progress-circular md-mode="indeterminate"
+                              md-diameter="100"
+                              layout-align="center center"
+                              md-colors="{ background: rgba(0, 0, 0, 0)}"
+                              >
+        </md-progress-circular>
+    </div>
+    <div ng-show="!isLoading" layout-align="center center">
+
+        <div layout="row" layout-align="center center">
+            <div layout="column" class="parent-card-revendedora" flex="33" layout-align="center">
+                <md-card class="card-revendedora" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">{{revendedora.nome}}</span>
+                            <span class="md-subhead">{{revendedora.telefone}}</span>
+                            <span class="md-subhead">{{revendedora.cidadeResidencial}}-{{revendedora.estadoResidencial}}</span>
+                            <span class="md-subhead">Limite de Crédito {{revendedora.limiteCredito | currency}}</span>
+                            <span class="md-subhead">Último contato em 09/09/2018 12:38</span>
+
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm card-media">
+                                <img ng-src="{{revendedora.photo}}" class="md-avatar" />
+                            </div>
+                        </md-card-title-media>
+                    </md-card-title>
+                </md-card>
+                <div layout="column" layout-align="center center">
+                    <canvas id="myCicleChart" width="400px" height="200px"></canvas>
+                </div>
+            </div>
+
+            <div layout="column" flex="33" layout-align="center">
+                <md-toolbar class="md-hue-1 black-toolbar">
+                    <div layout="row">
+                        <md-icon class="cart" md-svg-icon="res/shopping_cart.svg"></md-icon>
+                        <h2 class="md-toolbar-tools">
+                            <span>5 últimos produtos comprados</span>
+                        </h2>
+                    </div>
+                </md-toolbar>
+                <md-list-item ng-repeat="purchase in ultimasCompras"
+                              class="purchase-list md-dense">
+                    <img ng-src="{{purchase.imagemProduto}}" class="md-avatar" alt="{{purchase.descricao}}" />
+                    <div class="md-list-item-text" layout="column">
+                        <b>{{ purchase.vlr_Qtd_Unidades }} x {{ purchase.descricao | limitTo: 50}}</b>
+                        Data: {{ purchase.formattedDate |  date:'MM/dd/yyyy' }}
+                    </div>
+                </md-list-item>
+            </div>
+
+            <div layout="column" flex="33" layout-align="center center">
+                <canvas id="myChart" width="400px" height="400px"></canvas>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div layout="row">
+            <b>Recomendação personalizada</b>
+        </div>
+        <div layout="row" class="recomendation-content">
+            <div layout="row" flex>
+                <ul ng-repeat="r in recomendacoes" class="parent-recom">
+                    <div layout="column" >
+                        <div layout="row" >
+                            <label  for="{{r.cod_Material}}">
+                                <img class="img-prod-recom" src="{{r.imagemProduto}}">
+                            </label>
+                        </div>
+                        <div layout="row">
+                            <input id="{{r.cod_Material}}"
+                                   type="checkbox"
+                                   ng-model="r.isChecked" ng-change="onChange(r)">{{r.descricao | limitTo: 20}}
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div layout="row" >
+            <md-button flex="50" class="md-raised md-button md-ink-ripple back-button" href="#/list">
+                <b>Voltar</b>
+            </md-button>
+            <md-button flex="50" class="md-raised md-button md-ink-ripple send-button" ng-click="showConfirm($event)">
+               <b>Enviar  </b><md-icon md-svg-src="res/whats-app.svg"></md-icon>
+            </md-button>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

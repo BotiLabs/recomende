@@ -1,0 +1,37 @@
+
+<div ng-controller="listCtrl as ctrl"
+     layout-align="center"
+     ng-cloak class="list-page">
+    <h3>Revendedoras</h3>
+    <div class="list-revendedora" flex>
+        <div class="sendAll" ng-show="showBtn">
+            <md-button class="md-raised md-button md-ink-ripple" href="#/list">
+                <b>Enviar</b>
+            </md-button>
+        </div>
+        <div layout="column" layout-align="center center" ng-show="isLoading">
+            <br><br>
+            <md-progress-circular md-mode="indeterminate"
+                                  md-diameter="100"
+                                  md-colors="{background: 'purple-900'; background: rgba(0, 0, 0, 0);}"
+                                  >
+            </md-progress-circular>
+        </div>
+        <md-list-item ng-repeat="person in people"
+                      ng-click="goToDashboard(person.id, $event)"
+                      class="md-3-line list-item-revendedora"
+                      ng-if="!isLoading" >
+
+            <img ng-src="{{person.photo}}" class="md-avatar" />
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ person.nome }}</h3>
+                <h4>{{ person.telefone }}</h4>
+
+            </div>
+            <div layout="column" >
+                <p id ="classificao-revend"><b>{{ person.classificacao_Re }}</b></p>
+                <md-checkbox class="md-secondary" ng-model="person.selected" ng-click="showBtnSend()"></md-checkbox>
+            </div>
+        </md-list-item>
+    </div>
+</div>
